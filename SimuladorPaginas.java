@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class SimuladorPaginas {
-    // FIFO: remove a pagina que entrou primeiro.
+    // FIFO
     static int fifo(int[] paginas, int quadros) {
         ArrayList<Integer> memoria = new ArrayList<>();
         int faltas = 0;
@@ -17,7 +17,7 @@ public class SimuladorPaginas {
         return faltas;
     }
 
-    // LRU: coloca a pagina usada no fim da lista.
+    // LRU
     static int lru(int[] paginas, int quadros) {
         ArrayList<Integer> memoria = new ArrayList<>();
         int faltas = 0;
@@ -33,7 +33,7 @@ public class SimuladorPaginas {
         return faltas;
     }
 
-    // Relogio: pagina com bit 1 recebe uma segunda chance.
+    // Relogio
     static int relogio(int[] paginas, int quadros) {
         int[] memoria = new int[quadros];
         int[] bits = new int[quadros];
@@ -61,7 +61,7 @@ public class SimuladorPaginas {
         return faltas;
     }
 
-    // Otimo: remove a pagina que sera usada mais tarde.
+    // Otimo
     static int otimo(int[] paginas, int quadros) {
         ArrayList<Integer> memoria = new ArrayList<>();
         int faltas = 0;
@@ -108,7 +108,7 @@ public class SimuladorPaginas {
         painel.add(quantidade);
         painel.add(botao);
 
-        // Grafico simples, desenhado pelo proprio Swing.
+        // Grafico
         JPanel grafico = new JPanel() {
             
             @Override protected void paintComponent(Graphics g) {
@@ -145,7 +145,7 @@ public class SimuladorPaginas {
                         + "Metodo 2 - LRU: " + faltas[1] + " faltas de pagina\n"
                         + "Metodo 3 - Relogio: " + faltas[2] + " faltas de pagina\n"
                         + "Metodo 4 - Otimo: " + faltas[3] + " faltas de pagina");
-                // Atualiza o painel do grafico sem bibliotecas externas.
+              
                 grafico.putClientProperty("faltas", faltas);
                 grafico.repaint();
             } catch (NumberFormatException ex) {
